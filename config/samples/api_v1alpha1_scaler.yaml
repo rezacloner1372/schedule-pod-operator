@@ -1,0 +1,14 @@
+apiVersion: api.snappcloud.io/v1alpha1
+kind: Scaler
+metadata:
+  labels:
+    app.kubernetes.io/name: schedule-pod-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: scaler-sample
+spec:
+  start: 5
+  end: 22
+  replicas: 4
+  deployments:
+    - name: nginx
+      namespace: default
