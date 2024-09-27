@@ -1,8 +1,10 @@
 # schedule-pod-operator
-// TODO(user): Add simple overview of use/purpose
+A Kubernetes operator designed to scale deployments based on time-based schedules. It allows users to define specific time intervals during which the number of pod replicas should be adjusted automatically.
+
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+The schedule-pod-operator helps in automating the scaling of Kubernetes deployments by enabling a schedule-based approach. It allows users to define CRD instances (Scaler), which specify a time range and desired replica count. This operator then dynamically adjusts the deployment replicas based on the given time window, ensuring that resources are scaled only when needed.
+
 
 ## Getting Started
 
@@ -13,7 +15,7 @@
 - Access to a Kubernetes v1.11.3+ cluster.
 
 ### To Deploy on the cluster
-**Build and push your image to the location specified by `IMG`:**
+Build and push the operator image to your container registry. Set the IMG environment variable to point to your container registry and tag.
 
 ```sh
 make docker-build docker-push IMG=<some-registry>/schedule-pod-operator:tag
@@ -22,8 +24,12 @@ make docker-build docker-push IMG=<some-registry>/schedule-pod-operator:tag
 **NOTE:** This image ought to be published in the personal registry you specified.
 And it is required to have access to pull the image from the working environment.
 Make sure you have the proper permission to the registry if the above commands don’t work.
+Note: Ensure that you have the necessary permissions to push the image to the registry.
+
 
 **Install the CRDs into the cluster:**
+
+Install the CustomResourceDefinitions (CRDs) into your Kubernetes cluster:
 
 ```sh
 make install
